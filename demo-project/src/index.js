@@ -1,17 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+var DisplayEmployeeInfo=(empInfo)=>{
+return <div>
+<h1>Employee Details...</h1>
+<p>
+<label>Employee Id : <b>{empInfo.Id}</b></label>
+</p>
+<p>
+<label>Employee Name : <b>{empInfo.Name}</b></label>
+</p>
+<p>
+<label>Employee Location : <b>{empInfo.Location}</b></label>
+</p>
+<p>
+<label>Employee Salary : <b>{empInfo.Salary}</b></label>
+</p>
+<Department name={empInfo.deptName} head={empInfo.deptHead}></Department>
+</div>
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const Department=(deptInfo)=>{
+return <div>
+<p>
+<label>Department Name is: <b>{deptInfo.name}</b></label>
+</p>
+<p>
+<label>Department Head is : <b>{deptInfo.head}</b></label>
+</p>
+</div>
+};
+
+const element =<DisplayEmployeeInfo Id="1001" Name="Ashwini" Location="Delhi" Salary="47500" 
+deptName="React UI" deptHead="Pragim"></DisplayEmployeeInfo>
+
+ReactDOM.render(element,document.getElementById("root"));
