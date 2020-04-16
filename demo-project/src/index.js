@@ -1,17 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class CounterCharacters extends React.Component{
+constructor(props){
+  super(props);
+  this.state={
+    message:''  
+  };
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+  onMessageChange(text){
+    this.setState({message:'Message has '+text.length+' number of characters'});
+  }
+  render(){
+    return <div>
+       <h2>Welcome to count charachter components....</h2>
+       <p><label>Enter Message: <input type="text" onChange={e=>this.onMessageChange(e.target.value)}></input></label></p>
+       <p><label>{this.state.message}</label></p>
+    </div>
+  
+  }
+
+}
+
+class Employee extends React.Component{
+state={counter:0};
+addEmployee=()=>{
+  // alert('Adding a new Employee.');
+  this.setState({counter:this.state.counter+1});
+}
+
+render(){
+  return <div>
+      <h2>Welcome to Pragim technologys</h2>
+      <p><button onClick={this.addEmployee} >Add Employee</button></p>
+      <p><label>Add Employee button is clicked <b>{this.state.counter} times</b></label></p>
+  </div>
+}
+}
+
+// const element=<Employee></Employee>
+const element=<CounterCharacters></CounterCharacters>
+
+ReactDOM.render(element,document.getElementById("root"))
